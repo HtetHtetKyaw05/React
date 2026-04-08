@@ -1,13 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Home from './Home';
+//import Tutorials from './Tutorials';
+//import FormTutorial from './FormTutorial';
+import HabitTracker from './HabitTracker';
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route path='/' element={<Home />} />
+        <Route path='/' element={<HabitTracker />} />
         <Route
           path='*'
           element={
