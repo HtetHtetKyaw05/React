@@ -43,7 +43,7 @@ class Tutorials extends React.Component {
 function UserCard({ name, age, job }) {
   return (
     <div
-      // JSX attributes
+      // JSX attributes 
       style={{
         border: "1px solid gray",
         padding: "10px",

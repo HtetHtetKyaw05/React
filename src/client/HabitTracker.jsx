@@ -2,21 +2,27 @@ import { useState, useEffect } from "react";
 
 function HabitTracker() {
   // habitsをlocalStorageから読み込む
+  // useState（状態管理よう）
+  // habits習慣リスト
   const [habits, setHabits] = useState(() => {
     const saved = localStorage.getItem("habits");
     return saved ? JSON.parse(saved) : [];
   });
 
+  // useState
+  // 入力用
   const [input, setInput] = useState("");
 
+  // habits変更時に保存
+  // useEffect（副作用）
   // habitsが変わるたびにlocalStorageに保存
-  // なぜJSONを使うのか？
-  //localStorageは文字列しか保存できない。配列やオブジェクトはそのまま保存できない
+  // localStorageは文字列しか保存できないため、JSONを使う。配列やオブジェクトはそのまま保存できない
   useEffect(() => {
+    // localStroage（ブラウザ保存）、リロードしても残る
     localStorage.setItem("habits", JSON.stringify(habits));
   }, [habits]);
 
-  // 今日の日付（ストリーク用）
+  // 今日の日付取得（ストリーク用）
   const today = new Date().toISOString().split("T")[0];
 
   // 習慣追加
@@ -27,7 +33,7 @@ function HabitTracker() {
       ...habits,
       {
         id: Date.now(), // 一意ID
-        text: input,
+        text: input, // 入力値 
         completedDates: [], // 完了した日付リスト
         streak: 0 // 連続日数
       }
@@ -79,6 +85,7 @@ function HabitTracker() {
       <div style={styles.inputArea}>
         <input
           value={input}
+          //イベントハンドリング 
           onChange={(e) => setInput(e.target.value)}
           placeholder="習慣を入力"
           style={styles.input}
@@ -112,6 +119,7 @@ function HabitTracker() {
                   <input
                     type="checkbox"
                     checked={doneToday}
+                    // イベントハンドリング
                     onChange={() => toggleHabit(habit.id)}
                   />
                 </td>
@@ -137,7 +145,7 @@ function HabitTracker() {
   );
 }
 
-// シンプルUI
+// UIスタイル
 const styles = {
   container: {
     maxWidth: "600px",
