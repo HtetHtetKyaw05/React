@@ -10,22 +10,27 @@ ReactDOM.render(
     <BrowserRouter>
         <div>
           {/* ナビゲーションボタン */}
-          <nav style = {{ marginBottom : "20px"}}>
-            <Link to = "/tutorials">
+          <nav style = {{ margin : "20px"}}>
+            <Link to = "/" style = {{ margin : "5px"}}>
+              <button>Home</button>
+            </Link>
+
+            <Link to = "/tutorials" style = {{ margin : "5px"}}>
               <button>Tutorials</button>
             </Link>
 
-            <Link to = "/form">
+            <Link to = "/form" style = {{ margin : "5px"}}>
               <button>FormTutorial</button>
             </Link>
 
-            <Link to = "/habit">
+            <Link to = "/habit" style = {{ margin : "5px"}}>
               <button>HabitTracker</button>
             </Link>
           </nav>
 
           {/* 画面切り替え */}
           <Routes>
+            <Route path='/' />
             <Route path='/tutorials' element={<Tutorials />} />
             <Route path='/form' element={<FormTutorial />} />
             <Route path='/habit' element={<HabitTracker />} />
